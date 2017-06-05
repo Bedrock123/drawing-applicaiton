@@ -6,7 +6,7 @@ var el = document.getElementById('c');
 var ctx = el.getContext('2d');
 var isDrawing;
 
-el.onmousedown = function(e) {
+el.ontouchstart = function(e) {
   isDrawing = true;
   ctx.lineWidth = 2;
   ctx.lineJoin = ctx.lineCap = 'round';
