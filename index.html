@@ -1,0 +1,30 @@
+<canvas id="c" width="500" height="500"></canvas>
+<img id="canvasImg" alt="Right click to save me!">
+
+<script>
+var el = document.getElementById('c');
+var ctx = el.getContext('2d');
+var isDrawing;
+
+el.onmousedown = function(e) {
+  isDrawing = true;
+  ctx.lineWidth = 2;
+  ctx.lineJoin = ctx.lineCap = 'round';
+  ctx.shadowBlur = 3;
+  ctx.shadowColor = 'rgb(0, 0, 0)';
+  ctx.moveTo(e.clientX, e.clientY);
+};
+el.onmousemove = function(e) {
+  if (isDrawing) {
+    ctx.lineTo(e.clientX, e.clientY);
+    ctx.stroke();
+    var dataURL = el.toDataURL();
+document.getElementById('canvasImg').src = dataURL;
+  }
+};
+el.onmouseup = function() {
+  isDrawing = false;
+};
+
+
+</script>
